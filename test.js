@@ -6,6 +6,7 @@ function result(expression, variables){
 	const nums = [];
 	var temporarly = [] ;
 	const expressionArray = expression.split(' ');
+
 	
 	expressionArray.map(ex => {
 		if(ex === '+' || ex === '-' || ex === '*' || ex ==='/'){
@@ -16,6 +17,7 @@ function result(expression, variables){
 			nums.push(variables[ex])
 		}
 	});
+	const reversedOperators = operators.reverse();
 	
 	function addToTemporarly(temporarly, num, operator) {
 		if(temporarly.length === 0){
@@ -55,7 +57,7 @@ function result(expression, variables){
 		}
 	}
 	while(nums.length > 0 && operators.length > 0){
-		addToTemporarly(temporarly, nums, operators);
+		addToTemporarly(temporarly, nums, reversedOperators);
 	}
 	console.log(nums, temporarly)
 	return temporarly[temporarly.length -1];
